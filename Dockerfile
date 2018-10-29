@@ -1,4 +1,8 @@
-FROM debian:9-slim
+FROM armhf/debian:stretch-slim
+
+COPY qemu/exec_wrapper_armhf /usr/bin/exec_wrapper
+RUN  chmod +x /usr/bin/exec_wrapper
+SHELL ["/usr/bin/exec_wrapper", "/bin/bash", "-c"]
 
 ENV TERM linux
 ENV ENV DEBIAN_FRONTEND noninteractive
